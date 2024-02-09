@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Edumin - Bootstrap Admin Dashboard </title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="stylesheet" href="/css/style.css">
+
+
+</head>
+
+<body>
+
+<div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+
+    <div id="main-wrapper">
+        {{> header }}
+
+        {{> sideNavbar }}
+
+        <div class="content-body">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-xl-3 col-xxl-3 col-sm-6">
+                        <div class="widget-stat card bg-primary overflow-hidden">
+                            <div class="card-header">
+                                <h3 class="card-title text-white">Total Students</h3>
+                                <h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> 422</h5>
+                            </div>
+                            <div class="card-body text-center mt-3">
+                                <div class="ico-sparkline">
+                                    <div id="sparkline12"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-xxl-3 col-sm-6">
+                        <div class="widget-stat card bg-success overflow-hidden">
+                            <div class="card-header">
+                                <h3 class="card-title text-white">New Students</h3>
+                                <h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> 357</h5>
+                            </div>
+                            <div class="card-body text-center mt-4 p-0">
+                                <div class="ico-sparkline">
+                                    <div id="spark-bar-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-xxl-3 col-sm-6">
+                        <div class="widget-stat card bg-secondary overflow-hidden">
+                            <div class="card-header pb-3">
+                                <h3 class="card-title text-white">Total Course</h3>
+                                <h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> 547</h5>
+                            </div>
+                            <div class="card-body p-0 mt-2">
+                                <div class="px-4"><span class="bar1"
+                                        data-peity='{ "fill": ["rgb(0, 0, 128)", "rgb(7, 135, 234)"]}'>6,2,8,4,-3,8,1,-3,6,-5,9,2,-8,1,4,8,9,8,2,1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-xxl-3 col-sm-6">
+                        <div class="widget-stat card bg-danger overflow-hidden">
+                            <div class="card-header pb-3">
+                                <h3 class="card-title text-white">Fees Collection</h3>
+                                <h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> 3280$</h5>
+                            </div>
+                            <div class="card-body p-0 mt-1">
+                                <span class="peity-line-2" data-width="100%">7,6,8,7,3,8,3,3,6,5,9,2,8</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-xxl-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Income/Expense Report</h3>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="barChart_2"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-xxl-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Income/Expense Report</h3>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="areaChart_1"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Assign Task</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table header-border table-hover verticle-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Task</th>
+                                                <th scope="col">Assigned Lecturers</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Progress</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>1</th>
+                                                <td>Working Design report</td>
+                                                <td>Herman Beck</td>
+                                                <td><span class="badge badge-rounded badge-primary">DONE</span></td>
+                                                <td>
+                                                    <div class="progress">
+                                                        <div class="progress-bar" style="width: 70%;"
+                                                            role="progressbar">
+                                                            <span class="sr-only">70% Complete</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>2</th>
+                                                <td>Fees Collection report</td>
+                                                <td>Emma Watson</td>
+                                                <td><span class="badge badge-rounded badge-warning">Panding</span></td>
+                                                <td>
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-warning" style="width: 70%;"
+                                                            role="progressbar">
+                                                            <span class="sr-only">70% Complete</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>3</th>
+                                                <td>Management report</td>
+                                                <td>Mary Adams</td>
+                                                <td><span class="badge badge-rounded badge-warning">Panding</span></td>
+                                                <td>
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-warning" style="width: 70%;"
+                                                            role="progressbar">
+                                                            <span class="sr-only">70% Complete</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>4</th>
+                                                <td>Library book status</td>
+                                                <td>Caleb Richards</td>
+                                                <td><span class="badge badge-rounded badge-danger">Suspended</span></td>
+                                                <td>
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-danger" style="width: 70%;"
+                                                            role="progressbar">
+                                                            <span class="sr-only">70% Complete</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>5</th>
+                                                <td>Placement status</td>
+                                                <td>June Lane</td>
+                                                <td><span class="badge badge-rounded badge-warning">Panding</span></td>
+                                                <td>
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-warning" style="width: 70%;"
+                                                            role="progressbar">
+                                                            <span class="sr-only">70% Complete</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>6</th>
+                                                <td>Working Design report</td>
+                                                <td>Herman Beck</td>
+                                                <td><span class="badge badge-rounded badge-primary">DONE</span></td>
+                                                <td>
+                                                    <div class="progress">
+                                                        <div class="progress-bar" style="width: 70%;"
+                                                            role="progressbar">
+                                                            <span class="sr-only">70% Complete</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{> footer }}
+    </div>
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="/vendor/global/global.min.js"></script>
+    <script src="/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="/js/custom.min.js"></script>
+    <script src="/js/dlabnav-init.js"></script>
+
+    <!-- Chart ChartJS plugin files -->
+    <script src="/vendor/chart.js/Chart.bundle.min.js"></script>
+
+    <!-- Chart piety plugin files -->
+    <script src="/vendor/peity/jquery.peity.min.js"></script>
+
+    <!-- Chart sparkline plugin files -->
+    <script src="/vendor/jquery-sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Demo scripts -->
+    <script src="/js/dashboard/dashboard.js"></script>
+
+    <!-- Svganimation scripts -->
+    <script src="/vendor/svganimation/vivus.min.js"></script>
+    <script src="/vendor/svganimation/svg.animation.js"></script>
+    <script src="/js/styleSwitcher.js"></script>
+
+</body>
+
+</html>
