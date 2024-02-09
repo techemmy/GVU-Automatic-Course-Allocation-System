@@ -1,7 +1,11 @@
-import { Controller, Render, Get, Req, Redirect, Post } from '@nestjs/common';
+import { Controller, Render, Get, Redirect, Post, Body } from '@nestjs/common';
+import { CreateLecturerDto } from './dto/create-lecturer.dto';
+import { LecturersService } from './lecturers.service';
 
 @Controller('lecturers')
 export class LecturersController {
+  constructor(public lecturerService: LecturersService) { }
+
   @Get('/')
   @Render('lecturers/all-lecturers')
   getLecturers() {
@@ -16,9 +20,8 @@ export class LecturersController {
 
   @Post('/add')
   @Redirect('back')
-  createLecturer(@Req() req: Request) {
-    console.log(req.body);
-
+  async createLecturer(@Body() createLecturerDto: CreateLecturerDto) {
+    await this.lecturerService.create(createLecturerDto);
     return {};
   }
 }

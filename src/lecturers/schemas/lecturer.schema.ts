@@ -17,11 +17,8 @@ export class Lecturer {
   @Prop({ required: true, unique: true })
   email: string;
 
-  @Prop({ required: true, unique: true })
-  staffNo: string;
-
   @Prop()
-  availabile: boolean;
+  available: boolean;
 }
 
 export const lecturerSchema = SchemaFactory.createForClass(Lecturer);
