@@ -4,12 +4,13 @@ import { LecturersService } from './lecturers.service';
 
 @Controller('lecturers')
 export class LecturersController {
-  constructor(public lecturerService: LecturersService) { }
+  constructor(public lecturerService: LecturersService) {}
 
   @Get('/')
   @Render('lecturers/all-lecturers')
-  getLecturers() {
-    return {};
+  async getLecturers() {
+    const lecturers = await this.lecturerService.findAll();
+    return { lecturers };
   }
 
   @Get('/add')
