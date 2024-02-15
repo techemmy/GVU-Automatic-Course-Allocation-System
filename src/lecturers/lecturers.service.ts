@@ -18,7 +18,9 @@ export class LecturersService {
   }
 
   async findAll(): Promise<LecturerDocument[]> {
-    const lecturers = await this.lecturerModel.find({});
+    const lecturers = await this.lecturerModel
+      .find({})
+      .populate(['department', 'specialization']);
     return lecturers;
   }
 }
