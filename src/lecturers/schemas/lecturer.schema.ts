@@ -26,10 +26,10 @@ export class Lecturer {
   @Prop()
   title: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Department' })
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: Department.name })
   department: Department;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Specialization' })
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: Specialization.name })
   specialization: Specialization;
 }
 
