@@ -14,8 +14,6 @@ export class DepartmentsService {
   async create(createDepartmentDto: CreateDepartmentDto): Promise<Department> {
     const newDepartment =
       await this.departmentModel.create(createDepartmentDto);
-    console.log(createDepartmentDto);
-    console.log(newDepartment);
     return newDepartment;
   }
 
