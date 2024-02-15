@@ -26,4 +26,7 @@ export class CreateLecturerDto {
   @Transform(({ value }) => Boolean(value))
   @IsBoolean()
   available: boolean;
+
+  @IsString()
+  title: string;
 }

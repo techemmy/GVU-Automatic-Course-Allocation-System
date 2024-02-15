@@ -1,5 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
+import { Department } from 'src/departments/schemas/department.schema';
+import mongoose from 'mongoose';
 
 export type LecturerDocument = HydratedDocument<Lecturer>;
 
@@ -19,6 +21,12 @@ export class Lecturer {
 
   @Prop()
   available: boolean;
+
+  @Prop()
+  title: string;
+
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Department' })
+  department: Department;
 }
 
 export const lecturerSchema = SchemaFactory.createForClass(Lecturer);

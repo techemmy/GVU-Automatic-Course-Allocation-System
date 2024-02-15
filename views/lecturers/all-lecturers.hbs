@@ -79,6 +79,7 @@
 														<th>Email</th>
 														<th>Available</th>
 														<th>Department</th>
+														<th>Title</th>
 														<th>Specialization</th>
 													</tr>
 												</thead>
@@ -87,7 +88,7 @@
 													<tr>
         												<td>{{this.firstname}}</td>
 														<td>{{this.lastname}}</td>
-														<td>{{this.dateOfBirth}}</td>
+														<td>{{#formatDate this.dateOfBirth}}{{/formatDate}}</td>
 														<td><a href="mailto:{{this.email}}"><strong>{{this.email}}</strong></a></td>
 														<td>
                                                             {{#if this.available}}
@@ -98,7 +99,8 @@
 
                                                         </td>
 														<td>Computer Science</td>
-														<td>M.COM., P.H.D.</td>
+														<td>{{this.title}}</td>
+														<td>Database, Networking</td>
 														<td>
 															<a href="javascript:void(0);" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
 															<a href="javascript:void(0);" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>

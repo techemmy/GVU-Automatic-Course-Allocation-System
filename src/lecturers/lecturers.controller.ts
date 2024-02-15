@@ -1,10 +1,14 @@
 import { Controller, Render, Get, Redirect, Post, Body } from '@nestjs/common';
 import { CreateLecturerDto } from './dto/create-lecturer.dto';
 import { LecturersService } from './lecturers.service';
+import { DepartmentsService } from 'src/departments/departments.service';
 
 @Controller('lecturers')
 export class LecturersController {
-  constructor(public lecturerService: LecturersService) {}
+  constructor(
+    public lecturerService: LecturersService,
+    public departmentService: DepartmentsService,
+  ) {}
 
   @Get('/')
   @Render('lecturers/all-lecturers')
@@ -15,8 +19,9 @@ export class LecturersController {
 
   @Get('/add')
   @Render('lecturers/add-lecturer')
-  createLecturerForm() {
-    return {};
+  async createLecturerForm() {
+    const departments = await this.departmentService.findAll();
+    return { departments };
   }
 
   @Post('/add')
