@@ -1,4 +1,14 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Render,
+  Redirect,
+} from '@nestjs/common';
 import { CoursesService } from './courses.service';
 import { CreateCourseDto } from './dto/create-course.dto';
 import { UpdateCourseDto } from './dto/update-course.dto';
@@ -7,14 +17,23 @@ import { UpdateCourseDto } from './dto/update-course.dto';
 export class CoursesController {
   constructor(private readonly coursesService: CoursesService) {}
 
-  @Post()
-  create(@Body() createCourseDto: CreateCourseDto) {
-    return this.coursesService.create(createCourseDto);
+  @Get('/create')
+  @Render('courses/add-course')
+  createCourseForm() {
+    return {};
   }
 
-  @Get()
-  findAll() {
-    return this.coursesService.findAll();
+  @Post('/add')
+  @Redirect('back')
+  async createCourse(@Body() createCourseDto: CreateCourseDto) {
+    await this.coursesService.create(createCourseDto);
+  }
+
+  @Get('/')
+  @Render('courses/all-courses')
+  async getCourses() {
+    const courses = await this.coursesService.findAll();
+    return { courses };
   }
 
   @Get(':id')
