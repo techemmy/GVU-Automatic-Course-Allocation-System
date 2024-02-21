@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { SpecializationService } from './specialization.service';
-import { SpecializationController } from './specialization.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import {
   Specialization,
@@ -16,7 +15,6 @@ import {
       },
     ]),
   ],
-  controllers: [SpecializationController],
   providers: [SpecializationService],
   exports: [SpecializationService],
 })
