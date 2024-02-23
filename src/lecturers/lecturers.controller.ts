@@ -1,4 +1,13 @@
-import { Controller, Render, Get, Redirect, Post, Body } from '@nestjs/common';
+import {
+  Controller,
+  Render,
+  Get,
+  Redirect,
+  Post,
+  Body,
+  Param,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { CreateLecturerDto } from './dto/create-lecturer.dto';
 import { LecturersService } from './lecturers.service';
 import { DepartmentsService } from 'src/departments/departments.service';
@@ -32,5 +41,13 @@ export class LecturersController {
   async createLecturer(@Body() createLecturerDto: CreateLecturerDto) {
     await this.lecturerService.create(createLecturerDto);
     return {};
+  }
+
+  @Get('/delete/:id')
+  @Redirect('back')
+  async deleteLecturer(
+    @Param('id', ParseIntPipe) lecturerId: number,
+  ): Promise<void> {
+    await this.lecturerService.delete(lecturerId);
   }
 }

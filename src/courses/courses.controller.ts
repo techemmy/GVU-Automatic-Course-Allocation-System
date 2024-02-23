@@ -8,6 +8,7 @@ import {
   Delete,
   Render,
   Redirect,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { CoursesService } from './courses.service';
 import { CreateCourseDto } from './dto/create-course.dto';
@@ -46,7 +47,7 @@ export class CoursesController {
     return this.coursesService.update(+id, updateCourseDto);
   }
 
-  @Delete(':id')
+  @Get('/delete/:id')
   remove(@Param('id') id: string) {
     return this.coursesService.remove(+id);
   }

@@ -23,4 +23,8 @@ export class LecturersService {
       .populate(['department', 'specialization']);
     return lecturers;
   }
+
+  async delete(id: number): Promise<void> {
+    await this.lecturerModel.findByIdAndDelete(id);
+  }
 }
