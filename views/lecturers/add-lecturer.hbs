@@ -109,14 +109,14 @@
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Title</label>
-												<input type="text" class="form-control" name="title" required>
+												<input type="text" class="form-control" name="title" placeholder="e.g Prof Mr Soyinka" required>
 											</div>
 										</div>
 
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
-												<label class="form-label">Specialization</label>
-												<select class="form-control" name="specialization" required>
+												<label>Specialization</label>
+												<select multiple="" class="form-control" id="sel2" name="specializations" required>
 													{{#each specializations }}
 														<option value="{{ this.id }}">{{ this.name }}</option>
 													{{/each}}
