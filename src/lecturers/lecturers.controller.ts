@@ -45,9 +45,7 @@ export class LecturersController {
 
   @Get('/delete/:id')
   @Redirect('back')
-  async deleteLecturer(
-    @Param('id', ParseIntPipe) lecturerId: number,
-  ): Promise<void> {
-    await this.lecturerService.delete(lecturerId);
+  async deleteLecturer(@Param('id') id: string): Promise<void> {
+    await this.lecturerService.delete(id);
   }
 }

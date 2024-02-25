@@ -24,7 +24,7 @@ export class LecturersService {
     return lecturers;
   }
 
-  async delete(id: number): Promise<void> {
+  async delete(id: string): Promise<void> {
     await this.lecturerModel.findByIdAndDelete(id);
   }
 }
