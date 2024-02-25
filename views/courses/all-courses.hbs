@@ -47,25 +47,20 @@
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Lecturers</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">All Lecturers</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Courses</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">All Courses</a></li>
                         </ol>
                     </div>
                 </div>
 
 				<div class="row">
 					<div class="col-lg-12">
-						<ul class="nav nav-pills mb-3">
-							<li class="nav-item"><a href="#list-view" data-toggle="tab" class="nav-link btn-primary mr-1 show active">List View</a></li>
-						</ul>
-					</div>
-					<div class="col-lg-12">
 						<div class="row tab-content">
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
 								<div class="card">
 									<div class="card-header">
-										<h4 class="card-title">All Lecturers  </h4>
-										<a href="/lecturers/add" class="btn btn-primary">+ Add new</a>
+										<h4 class="card-title">All Courses  </h4>
+										<a href="/courses/add" class="btn btn-primary">+ Add new</a>
 									</div>
 									<div class="card-body">
 										<div class="table-responsive">
@@ -98,24 +93,11 @@
         {{> footer }}
     </div>
 
-    <!--**********************************
-        Scripts
-    ***********************************-->
-    <!-- Required vendors -->
-    <script src="/vendor/global/global.min.js"></script>
-    <script src="/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-    <script src="/js/custom.min.js"></script>
-    <script src="/js/dlabnav-init.js"></script>
-
+    {{> generalScripts }}
 
 	<!-- Datatable -->
 	<script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
 	<script src="/js/plugins-init/datatables.init.js"></script>
-
-    <!-- Svganimation scripts -->
-    <script src="/vendor/svganimation/vivus.min.js"></script>
-    <script src="/vendor/svganimation/svg.animation.js"></script>
-    <script src="/js/styleSwitcher.js"></script>
 
 </body>
 
