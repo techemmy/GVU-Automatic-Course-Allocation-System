@@ -6,7 +6,6 @@ import {
   Post,
   Body,
   Param,
-  ParseIntPipe,
 } from '@nestjs/common';
 import { CreateLecturerDto } from './dto/create-lecturer.dto';
 import { LecturersService } from './lecturers.service';

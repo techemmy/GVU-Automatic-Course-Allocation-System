@@ -29,8 +29,8 @@ export class Lecturer {
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: Department.name })
   department: Department;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: Specialization.name })
-  specialization: Specialization;
+  @Prop([{ type: mongoose.Schema.Types.ObjectId, ref: Specialization.name }])
+  specializations: Specialization[];
 }
 
 export const lecturerSchema = SchemaFactory.createForClass(Lecturer);
