@@ -34,14 +34,14 @@ export class SpecializationService {
     return specialization;
   }
 
-  async update(id: number, updateSpecializationDto: UpdateSpecializationDto) {
+  async update(id: string, updateSpecializationDto: UpdateSpecializationDto) {
     await this.specializationModel.findByIdAndUpdate(
       id,
       updateSpecializationDto,
     );
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     await this.specializationModel.findByIdAndDelete(id);
   }
 }

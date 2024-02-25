@@ -95,12 +95,12 @@ export class CoursesController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.coursesService.findOne(+id);
+    return this.coursesService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCourseDto: UpdateCourseDto) {
-    return this.coursesService.update(+id, updateCourseDto);
+    return this.coursesService.update(id, updateCourseDto);
   }
 
   @Get('/delete/:id')

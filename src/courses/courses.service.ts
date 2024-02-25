@@ -46,12 +46,12 @@ export class CoursesService {
     return allCourses;
   }
 
-  async findOne(id: number): Promise<CourseDocument> {
+  async findOne(id: string): Promise<CourseDocument> {
     const course = await this.courseModel.findById(id);
     return course;
   }
 
-  async update(id: number, updateCourseDto: UpdateCourseDto): Promise<void> {
+  async update(id: string, updateCourseDto: UpdateCourseDto): Promise<void> {
     await this.courseModel.findByIdAndUpdate(id, updateCourseDto);
   }
 
