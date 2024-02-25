@@ -16,7 +16,7 @@ import { UpdateCourseDto } from './dto/update-course.dto';
 export class CoursesController {
   constructor(private readonly coursesService: CoursesService) {}
 
-  @Get('/create')
+  @Get('/add')
   @Render('courses/add-course')
   createCourseForm() {
     return {};
