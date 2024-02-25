@@ -29,7 +29,7 @@ export class SpecializationService {
     return allSpecializations;
   }
 
-  async findOne(id: number): Promise<SpecializationDocument> {
+  async findOne(id: string): Promise<SpecializationDocument> {
     const specialization = await this.specializationModel.findById(id);
     return specialization;
   }

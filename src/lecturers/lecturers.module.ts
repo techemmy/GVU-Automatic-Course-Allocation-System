@@ -16,5 +16,6 @@ import { SpecializationModule } from 'src/specialization/specialization.module';
   ],
   controllers: [LecturersController],
   providers: [LecturersService],
+  exports: [LecturersService],
 })
 export class LecturersModule {}

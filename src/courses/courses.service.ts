@@ -4,12 +4,35 @@ import { UpdateCourseDto } from './dto/update-course.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Course, CourseDocument } from './schemas/course.schema';
 import { Model } from 'mongoose';
+import {
+  CourseLecturerAllocation,
+  CourseLecturerAllocationDocument,
+} from 'src/schemas/allocation.schema';
 
 @Injectable()
 export class CoursesService {
   constructor(
     @InjectModel(Course.name) private courseModel: Model<CourseDocument>,
+    @InjectModel(CourseLecturerAllocation.name)
+    private courseLecturerAllocationModel: Model<CourseLecturerAllocationDocument>,
   ) {}
+
+  async allocateCourses(lecturerToCoursesMapping: {
+    [key: string]: string[];
+  }): Promise<void> {
+    const sessionYear = new Date().getFullYear();
+    await this.courseLecturerAllocationModel.deleteMany({ sessionYear });
+
+    for (const lecturerId in lecturerToCoursesMapping) {
+      for await (const courseId of lecturerToCoursesMapping[lecturerId]) {
+        await this.courseLecturerAllocationModel.create({
+          lecturer: lecturerId,
+          course: courseId,
+          sessionYear,
+        });
+      }
+    }
+  }
 
   async create(createCourseDto: CreateCourseDto): Promise<CourseDocument> {
     const newCourse = await this.courseModel.create(createCourseDto);
@@ -17,7 +40,9 @@ export class CoursesService {
   }
 
   async findAll(): Promise<CourseDocument[]> {
-    const allCourses = await this.courseModel.find({});
+    const allCourses = await this.courseModel
+      .find({})
+      .populate('specialization');
     return allCourses;
   }
 

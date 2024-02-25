@@ -69,13 +69,15 @@
 													<tr>
 														<th>Course Name</th>
 														<th>Course Code</th>
+														<th>Specialization</th>
 													</tr>
 												</thead>
 												<tbody>
 												    {{#each courses }}
 													<tr>
         												<td>{{this.name}}</td>
-														<td>{{this.code }}</td>
+													<td>{{this.code }}</td>
+													<td>{{this.specialization.name }}</td>
 												    {{/each }}
 												</tbody>
 											</table>

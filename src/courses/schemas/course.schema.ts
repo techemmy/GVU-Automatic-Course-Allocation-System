@@ -9,7 +9,7 @@ export class Course {
   @Prop({ required: true })
   name: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, unique: true })
   code: string;
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: Specialization.name })

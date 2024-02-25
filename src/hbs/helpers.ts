@@ -7,3 +7,7 @@ export function formatDate(dateObj: Date): string {
 export function formatSpecializations(specializations: Specialization[]) {
   return specializations.map((s) => `<b>${s.name}</b>`).join(', ');
 }
+
+export function isEmptyList(iterable: any[]) {
+  return iterable.length < 1;
+}
