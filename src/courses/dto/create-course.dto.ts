@@ -1,4 +1,6 @@
-import { IsString } from 'class-validator';
+import { Transform } from 'class-transformer';
+import { IsNumber, IsString } from 'class-validator';
+import { Specialization } from 'src/specialization/schemas/specialization.schema';
 
 export class CreateCourseDto {
   @IsString()
@@ -6,4 +8,8 @@ export class CreateCourseDto {
 
   @IsString()
   code: string;
+
+  @Transform(({ value }) => Number.parseInt(value))
+  @IsNumber()
+  specialization: Specialization;
 }
