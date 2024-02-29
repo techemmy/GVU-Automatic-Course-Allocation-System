@@ -17,14 +17,15 @@ export class CoursesService {
     private courseLecturerAllocationModel: Model<CourseLecturerAllocationDocument>,
   ) {}
 
-  async allocateCourses(lecturerToCoursesMapping: {
-    [key: string]: string[];
-  }): Promise<void> {
+  async allocateCourses(
+    lecturerToCoursesMapping: Map<string, string[]>,
+  ): Promise<void> {
     const sessionYear = new Date().getFullYear();
     await this.courseLecturerAllocationModel.deleteMany({ sessionYear });
 
-    for (const lecturerId in lecturerToCoursesMapping) {
-      for await (const courseId of lecturerToCoursesMapping[lecturerId]) {
+    for (const lecturerAndCourses of lecturerToCoursesMapping) {
+      const [lecturerId, coursesId] = lecturerAndCourses;
+      for await (const courseId of coursesId) {
         await this.courseLecturerAllocationModel.create({
           lecturer: lecturerId,
           course: courseId,

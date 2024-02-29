@@ -48,11 +48,11 @@ export class CoursesController {
   async allocateCourses(): Promise<void> {
     const courses = await this.coursesService.findAll();
     const lecturers = await this.lecturersService.findAll();
-    const courseLecturerAllocations = {};
+    const courseLecturerAllocations = new Map();
 
     lecturers.forEach((lecturer) => {
-      if (!courseLecturerAllocations[lecturer.id.toString()]) {
-        courseLecturerAllocations[lecturer.id.toString()] = [];
+      if (!courseLecturerAllocations.has(lecturer.id.toString())) {
+        courseLecturerAllocations.set(lecturer.id.toString(), []);
       }
     });
 
@@ -70,26 +70,21 @@ export class CoursesController {
         continue;
       }
 
-      // choose lecturer with minimum courses assigned to them already
-      let lecturerToAssign;
-      for (const lecturer of lecturersWithSpec) {
-        const lecturerId = lecturer.id.toString();
-        if (!lecturerToAssign) {
-          lecturerToAssign = lecturerId;
-          continue;
-        }
+      const lecturerToAssign = lecturersWithSpec.reduce(
+        (prevLecturer, currentLecturer) => {
+          if (
+            courseLecturerAllocations.get(prevLecturer.id).length <
+            courseLecturerAllocations.get(currentLecturer.id).length
+          ) {
+            return currentLecturer;
+          } else {
+            return prevLecturer;
+          }
+        },
+      );
 
-        if (
-          courseLecturerAllocations[lecturerId].length <
-          courseLecturerAllocations[lecturerToAssign].length
-        ) {
-          lecturerToAssign = lecturerId;
-        }
-      }
-
-      courseLecturerAllocations[lecturerToAssign].push(course.id.toString());
+      courseLecturerAllocations.get(lecturerToAssign.id).push(course.id);
     }
-
     await this.coursesService.allocateCourses(courseLecturerAllocations);
   }
 
