@@ -76,9 +76,9 @@ export class CoursesController {
             courseLecturerAllocations.get(prevLecturer.id).length <
             courseLecturerAllocations.get(currentLecturer.id).length
           ) {
-            return currentLecturer;
-          } else {
             return prevLecturer;
+          } else {
+            return currentLecturer;
           }
         },
       );
