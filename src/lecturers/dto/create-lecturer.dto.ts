@@ -5,7 +5,6 @@ import {
   IsBoolean,
   IsEmail,
   IsNotEmpty,
-  IsArray,
 } from 'class-validator';
 
 export class CreateLecturerDto {
@@ -31,6 +30,5 @@ export class CreateLecturerDto {
   @IsString()
   title: string;
 
-  @IsArray()
-  specializations: string[];
+  specializations: string | string[];
 }

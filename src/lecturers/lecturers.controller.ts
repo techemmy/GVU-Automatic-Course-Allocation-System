@@ -39,7 +39,6 @@ export class LecturersController {
   @Redirect('back')
   async createLecturer(@Body() createLecturerDto: CreateLecturerDto) {
     await this.lecturerService.create(createLecturerDto);
-    return {};
   }
 
   @Get('/delete/:id')
