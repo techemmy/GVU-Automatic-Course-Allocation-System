@@ -25,11 +25,14 @@ export class AppService {
       .find({ sessionYear: thisYear })
       .populate(['lecturer', 'course']);
 
+    console.log(courseLecturerAllocations);
     for await (const allocation of courseLecturerAllocations) {
-      allocation.course.specialization =
-        await this.specializationService.findOne(
-          allocation.course.specialization as unknown as string,
-        );
+      if (allocation.course) {
+        allocation.course.specialization =
+          await this.specializationService.findOne(
+            allocation.course.specialization as unknown as string,
+          );
+      }
     }
 
     return courseLecturerAllocations;
