@@ -9,7 +9,7 @@
     <title>Glorious Vision University</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-	<link rel="stylesheet" href="/vendor/fullcalendar/css/fullcalendar.min.css">
+    <link rel="stylesheet" href="/css/timetablejs.css">
     <link rel="stylesheet" href="/css/style.css">
 
 </head>
@@ -92,10 +92,10 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-intro-title">Timetable</h4>
-                                <p>Generation will only work after course allocation</p>
+                                <p>Timetable will be automatically generated after courses have been allocated to lecturers</p>
                                 <div class="mt-1">
-                                    <a href="javascript:void()" data-toggle="modal" data-target="#add-category" class="btn btn-primary btn-event w-100">
-                                        <span class="align-middle"><i class="ti-plus"></i></span> Generate Timetable
+                                    <a href="javascript:void()"  class="btn btn-primary w-100">
+                                        Auto Generated
                                     </a>
                                 </div>
                             </div>
@@ -105,6 +105,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div id="calendar" class="app-fullcalendar"></div>
+                                <div id="calendar" class="timetable"></div>
                             </div>
                         </div>
                     </div>
@@ -137,9 +138,40 @@
     {{> generalScripts }}
 
     <script src="/vendor/jqueryui/js/jquery-ui.min.js"></script>
-    <script src="/vendor/moment/moment.min.js"></script>
-    <script src="/vendor/fullcalendar/js/fullcalendar.min.js"></script>
-    <script src="/js/plugins-init/fullcalendar-init.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sync-scroll@1.0.3/syncscroll.min.js"></script>
+    <script src="/js/timetable.js"></script>
+
+    <script>
+        var timetable = new Timetable();
+        var renderer = new Timetable.Renderer(timetable);
+
+        fetch('/getTimetable').then(res => res.json()).then(data => {
+            const {
+                days,
+                lectureHours: [startTime, endTime],
+                courseToDayTable,
+                defaultCourseDuration
+            } = data;
+            timetable.setScope(startTime, endTime)
+            timetable.addLocations(days);
+
+            const today = new Date();
+            for (const course in courseToDayTable) {
+                const [courseDay, courseStartTime] = courseToDayTable[course];
+
+                const startTime = new Date()
+                const endTime = new Date()
+
+                startTime.setHours(courseStartTime, 0, 0);
+                endTime.setHours(courseStartTime + defaultCourseDuration, 0, 0);
+
+            console.log(startTime, endTime)
+                timetable.addEvent(course, courseDay, startTime, endTime);
+            }
+
+            renderer.draw('.timetable')
+            })
+    </script>
 
 </body>
 

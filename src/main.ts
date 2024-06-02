@@ -4,7 +4,12 @@ import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import * as hbs from 'hbs';
-import { formatDate, formatSpecializations, isEmptyList } from './hbs/helpers';
+import {
+  formatDate,
+  formatSpecializations,
+  isEmptyList,
+  json,
+} from './hbs/helpers';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -17,6 +22,7 @@ async function bootstrap() {
   hbs.registerHelper('fDate', formatDate);
   hbs.registerHelper('fSpecializations', formatSpecializations);
   hbs.registerHelper('isEmptyList', isEmptyList);
+  hbs.registerHelper('json', json);
 
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(3000);
