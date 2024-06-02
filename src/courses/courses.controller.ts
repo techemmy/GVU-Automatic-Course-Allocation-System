@@ -99,6 +99,7 @@ export class CoursesController {
   }
 
   @Get('/delete/:id')
+  @Redirect('back')
   remove(@Param('id') id: string) {
     return this.coursesService.remove(id);
   }
