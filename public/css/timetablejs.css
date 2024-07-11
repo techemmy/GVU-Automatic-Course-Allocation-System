@@ -155,7 +155,7 @@
   background-position: -2px 0;
 }
 .timetable .time-entry {
-  background-color: #ec6a5e;
+  background-color: #7356f1;
   transition: background-color 0.2s;
   height: 45px;
   display: block;
@@ -165,7 +165,7 @@
   white-space: normal;
   overflow: hidden;
   color: #fff;
-  border: 1px solid #e32c1b;
+  border: 1px solid #7356f1;
   transform-style: preserve-3d;
 }
 .timetable .time-entry small {
@@ -175,5 +175,6 @@
   display: block;
 }
 .timetable .time-entry:hover {
-  background-color: #e74030;
+  background-color: #b19fff;
+  cursor: pointer;
 }

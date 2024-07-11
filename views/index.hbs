@@ -78,7 +78,7 @@
                                                     <td>{{this.course.name}} ({{this.course.code}})</td>
                                                 {{/if}}
                                                 {{#unless this.course.name}}
-                                                    <td><i>Course Deleted! <b>(Re-Allocate courses to see the timetable)</b></i></td>
+                                                    <td><i>Course Deleted! <b>(Click Auto-Allocate Courses to refresh and get timetable)</b></i></td>
                                                 {{/unless}}
                                                 <td>{{this.lecturer.firstname}} {{this.lecturer.lastname}}</td>
                                                 <td>{{this.course.specialization.name}}</td>
@@ -99,7 +99,7 @@
                                 <h4 class="card-intro-title">Timetable</h4>
                                 <p>Timetable will be automatically generated after courses have been allocated to lecturers</p>
                                 <div class="mt-1">
-                                    <a href="javascript:void()"  class="btn btn-primary w-100">
+                                    <a class="btn btn-outline w-100">
                                         Auto Generated
                                     </a>
                                 </div>
