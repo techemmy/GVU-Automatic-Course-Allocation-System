@@ -41,7 +41,7 @@ export class AppController {
         courses_allocated < courseAllocations.length && j < coursesPerDay;
         j++
       ) {
-        const courseCode = courseAllocations[courses_allocated++].course.code;
+        const courseCode = courseAllocations[courses_allocated++]?.course?.code;
         if (isTimeAvailableToday(startTime, endTime, defaultCourseDuration)) {
           courseToDayTable[courseCode] = [days[i], startTime];
           startTime += defaultCourseDuration;
