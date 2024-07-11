@@ -30,7 +30,7 @@ export class AppController {
       return startTime + duration <= endTime;
     };
 
-    const coursesPerDay = Math.ceil(courseAllocations.length / 5);
+    const coursesPerDay = Math.ceil(courseAllocations.length / days.length);
     const defaultCourseDuration = 2;
     let courses_allocated = 0;
 

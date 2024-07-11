@@ -74,7 +74,12 @@
                                             {{#each courseAllocations}}
                                             <tr>
                                                 <th>#</th>
-                                                <td>{{this.course.name}} ({{this.course.code}})</td>
+                                                {{#if this.course.name}}
+                                                    <td>{{this.course.name}} ({{this.course.code}})</td>
+                                                {{/if}}
+                                                {{#unless this.course.name}}
+                                                    <td><i>Course Deleted! <b>(Re-Allocate courses to see the timetable)</b></i></td>
+                                                {{/unless}}
                                                 <td>{{this.lecturer.firstname}} {{this.lecturer.lastname}}</td>
                                                 <td>{{this.course.specialization.name}}</td>
                                             </tr>
